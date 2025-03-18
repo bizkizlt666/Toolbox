@@ -48,7 +48,6 @@ async def delete_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await clear_chat(update, context)
     keyboard = [
-        #[InlineKeyboardButton("Home", callback_data='start')],
         [InlineKeyboardButton("🎵 Music ", callback_data='music')],
         [InlineKeyboardButton("🎞️ Video Clips ", callback_data='clips')],
         [InlineKeyboardButton("▶️ Playlists ", callback_data='lists')],
@@ -64,9 +63,6 @@ async def clips(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await clear_chat(update, context)
     keyboard = [
         [InlineKeyboardButton("🏠 Home", callback_data='start')],
-        #[InlineKeyboardButton("🎵 Music ", callback_data='music')],
-        #[InlineKeyboardButton("🎞️ Video Clips ", callback_data='clips')],
-        #[InlineKeyboardButton("▶️ Playlists ", callback_data='lists')],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
@@ -77,9 +73,6 @@ async def clips(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def lists(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await clear_chat(update, context)
     keyboard = [
-        #[InlineKeyboardButton("Home", callback_data='start')],
-        #[InlineKeyboardButton("🎵 Music ", callback_data='music')],
-        #[InlineKeyboardButton("🎞️ Video Clips ", callback_data='clips')]
         [InlineKeyboardButton("🍺 Punk", callback_data='punk')],
         [InlineKeyboardButton("🏠 Home", callback_data='start')],
     ]
@@ -114,7 +107,6 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await delete(update, context)
 
     if query.data == 'start':
-        #await clear_chat(update, context)
         await start(update, context)
     elif query.data == 'music':
         await music(update, context)
@@ -139,7 +131,6 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await music(update, context)
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    #await update.message.reply_text(update.message.text)
     await delete_user_message(update, context)
     
 def get_token():
