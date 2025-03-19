@@ -37,9 +37,9 @@ def start_program(choice):
         else:
             os.system("clear")
             os.system(f"tmux new-session -d -s {program_name} '{command}'")
-            print(f"{program_name} elindítva egy új tmux sessionben.")
     else:
-        print("Érvénytelen választás, próbáld újra!")
+        os.system("clear")
+        print("Invalid number!")
 
 while True:
     show_menu()
