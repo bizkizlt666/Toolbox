@@ -2,17 +2,17 @@ import os
 
 # Menü definiálása
 programs = {
-    "1": ("Restarter", "bash restarter.sh"),
-    "2": ("Telegram Music bot", "python bot1.py"),
-    "3": ("HTOP rendszerfigyelő", "htop"),
-    "4": ("Process kill - összes", "tmux kill-server"),
+    "1": ("Restarter (Keeps your wi-fi alive)", "bash restarter.sh"),
+    "2": ("Telegram bot (Telegram bot host)", "python bot1.py"),
+    "3": ("Process kill (All process from the list) - összes", "tmux kill-server"),
+    "5": ("Running processes (Shows backround running tasks)", ""),
    "..": ("", ""),
-    "0": ("Kilépés", "exit"),
+    "0": ("Exit", "exit"),
 }
 os.system("clear")
 def show_menu():
     os.system('toilet -F metal "Toolbox"')
-    print("\nVálassz egy programot az indításhoz:\n")
+    print("\nChoose an item:\n")
     for key, value in programs.items():
         print(f"{key}. {value[0]}")
 
@@ -23,7 +23,7 @@ def start_program(choice):
         command = programs[choice][1]
 
         if command == "exit":
-            print("Kilépés...")
+            print("Exit...")
             os.system("clear")
             exit()
 
@@ -34,7 +34,6 @@ def start_program(choice):
 
         if session_check:
             os.system("clear")
-            print(f"{program_name} már fut egy tmux sessionben!")
         else:
             os.system("clear")
             os.system(f"tmux new-session -d -s {program_name} '{command}'")
@@ -44,5 +43,10 @@ def start_program(choice):
 
 while True:
     show_menu()
-    user_input = input("\nAdd meg a számot: ")
-    start_program(user_input)
+    user_input = input("\n-> ")
+    if user_input == "5":
+        os.system("clear")
+        os.system("python menu1.py")
+        exit()
+    else:
+        start_program(user_input)
